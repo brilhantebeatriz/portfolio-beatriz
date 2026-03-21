@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatriz Brilhante | Portfólio</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== BADGE CURSANDO ===== */
+        .badge-cursando {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #FF2D78, #ff6b35);
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 13px;
+            border-radius: 50px;
+            box-shadow: 0 4px 14px rgba(255,45,120,0.45);
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+        .badge-cursando::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #fff;
+            border-radius: 50%;
+            animation: blink-dot 1.2s ease-in-out infinite;
+        }
+        @keyframes pulse-badge {
+            0%,100% { box-shadow: 0 4px 14px rgba(255,45,120,0.45); }
+            50%      { box-shadow: 0 4px 22px rgba(255,45,120,0.75); }
+        }
+        @keyframes blink-dot {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0.25; }
+        }
+
+        /* ===== THUMBS NOVOS ===== */
+        .thumb-coursera { background: linear-gradient(135deg, #0056D2, #00BAFF); }
+        .thumb-aws      { background: linear-gradient(135deg, #1a2332, #FF9900); }
+    </style>
+</head>
+<body>
+
+    <!-- INTRO -->
+    <div id="intro-screen">
+        <canvas id="intro-particles"></canvas>
+        <div id="intro-content">
+            <div id="intro-initials">BB<span class="intro-dot">.</span></div>
+            <div id="intro-icons">
+                <i class="fas fa-laptop-code"></i>
+                <i class="fas fa-heart intro-heart"></i>
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div id="intro-name">Beatriz Brilhante</div>
+            <div id="intro-sub">Monitoria em Informática</div>
+            <div id="intro-bar"><div id="intro-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+        <button id="lightbox-close"><i class="fas fa-times"></i></button>
+        <button class="lb-nav hidden" id="lb-prev"><i class="fas fa-chevron-left"></i></button>
+        <img id="lightbox-img" src="eu.jpeg" alt="eu">
+        <button class="lb-nav hidden" id="lb-next"><i class="fas fa-chevron-right"></i></button>
+        <div id="lb-counter"></div>
+    </div>
+
+    <!-- PARALLAX FUNDO -->
+    <div id="parallax-bg">
+        <canvas id="particles-canvas"></canvas>
+        <div class="float-icon" data-speed="0.06" style="top:8%;left:5%;font-size:2.2rem;"><i class="fas fa-book-open"></i></div>
+        <div class="float-icon" data-speed="0.10" style="top:15%;left:88%;font-size:1.8rem;"><i class="fas fa-laptop"></i></div>
+        <div class="float-icon" data-speed="0.07" style="top:25%;left:15%;font-size:1.5rem;"><i class="fas fa-code"></i></div>
+        <div class="float-icon" data-speed="0.13" style="top:30%;left:78%;font-size:2rem;"><i class="fas fa-graduation-cap"></i></div>
+        <div class="float-icon" data-speed="0.05" style="top:40%;left:3%;font-size:1.6rem;"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="float-icon" data-speed="0.09" style="top:45%;left:92%;font-size:1.4rem;"><i class="fas fa-microchip"></i></div>
+        <div class="float-icon" data-speed="0.11" style="top:55%;left:10%;font-size:1.9rem;"><i class="fas fa-database"></i></div>
+        <div class="float-icon" data-speed="0.06" style="top:60%;left:82%;font-size:1.7rem;"><i class="fas fa-pencil-ruler"></i></div>
+        <div class="float-icon" data-speed="0.08" style="top:68%;left:22%;font-size:1.5rem;"><i class="fas fa-brain"></i></div>
+        <div class="float-icon" data-speed="0.12" style="top:72%;left:70%;font-size:2.1rem;"><i class="fas fa-wifi"></i></div>
+        <div class="float-icon" data-speed="0.07" style="top:80%;left:6%;font-size:1.6rem;"><i class="fas fa-atom"></i></div>
+        <div class="float-icon" data-speed="0.10" style="top:85%;left:88%;font-size:1.4rem;"><i class="fas fa-keyboard"></i></div>
+        <div class="float-icon" data-speed="0.09" style="top:90%;left:40%;font-size:1.8rem;"><i class="fas fa-network-wired"></i></div>
+        <div class="float-icon" data-speed="0.06" style="top:5%;left:50%;font-size:1.5rem;"><i class="fas fa-terminal"></i></div>
+        <div class="float-icon" data-speed="0.11" style="top:50%;left:50%;font-size:1.3rem;"><i class="fas fa-flask"></i></div>
+        <div class="float-icon" data-speed="0.08" style="top:20%;left:45%;font-size:1.6rem;"><i class="fab fa-html5"></i></div>
+        <div class="float-icon" data-speed="0.13" style="top:35%;left:58%;font-size:1.4rem;"><i class="fab fa-js"></i></div>
+        <div class="float-icon" data-speed="0.07" style="top:63%;left:48%;font-size:1.7rem;"><i class="fab fa-python"></i></div>
+        <div class="float-icon" data-speed="0.10" style="top:75%;left:33%;font-size:1.5rem;"><i class="fas fa-book"></i></div>
+        <div class="float-icon" data-speed="0.05" style="top:12%;left:30%;font-size:1.8rem;"><i class="fas fa-pen-nib"></i></div>
+    </div>
+
+    <nav>
+        <a href="#inicio" class="logo">BB<span class="highlight">.</span></a>
+        <div class="nav-links">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#skills">Skills</a>
+            <a href="#certificados">Certificados</a>
+            <a href="#contato">Contato</a>
+        </div>
+        <button id="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span id="theme-label">Alterar tema</span>
+        </button>
+    </nav>
+
+    <div class="container-hero">
+        <section id="inicio" class="hero">
+            <div class="hero-content reveal from-left">
+                <h1>Olá! Meu nome é <br><span class="highlight">Beatriz Brilhante.</span></h1>
+                <p style="font-size:1.2rem;opacity:0.8;">Estudante da EEEP Professora Luiza de Teodoro Vieira — Curso Técnico em Informática. Possuo interesse nas relações entre educação e tecnologia.</p>
+                <a href="#projetos" class="btn">Conheça os meus Projetos!</a>
+            </div>
+            <div class="hero-image reveal from-right">
+                <div class="foto-perfil-wrapper">
+                    <span class="initials">BB</span>
+                    <img src="eu.jpeg" class="foto-perfil" alt="Beatriz Brilhante" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container">
+
+        <section id="sobre" class="section">
+            <h2 class="reveal" style="font-size:2.5rem;text-align:center;margin-bottom:30px;">Sobre Mim</h2>
+            <div class="card-item reveal from-left" style="max-width:600px;margin:0 auto;text-align:center;height:auto;">
+                <p style="font-size:1.25rem;">Estudante técnica na EEEP Professora Luiza de Teodoro Vieira com foco na interseção entre tecnologia e educação. Busco atuar no suporte ao aprendizado de informática, partindo do princípio de que a tecnologia é ainda mais transformadora quando bem ensinada e acessível. Minha intenção é facilitar a compreensão de conceitos técnicos e a auxiliar no desenvolvimento de competências digitais.</p>
+            </div>
+        </section>
+
+        <section id="projetos" class="section">
+            <div style="text-align:center;">
+                <h2 class="reveal" style="font-size:2.5rem;margin-bottom:10px;">Meus Projetos</h2>
+                <p class="reveal" style="font-size:1.1rem;opacity:0.9;">Confira os projetos no meu <a href="#contato" class="highlight" style="text-decoration:underline;font-weight:bold;">GitHub — Contato</a></p>
+            </div>
+            <div class="grid-layout">
+                <div class="card-item reveal from-left">
+                    <div class="card-thumb thumb-feprotec"><i class="fas fa-globe"></i><span class="thumb-label">FEPROTEC</span><img src="feprotec.png" alt="Site FEPROTEC" onerror="this.style.display='none'"></div>
+                    <h3>Site — FEPROTEC</h3>
+                    <p>Exposição da importância das Linguagens na área tecnológica.</p>
+                </div>
+                <div class="card-item reveal">
+                    <div class="card-thumb thumb-js"><i class="fab fa-js-square"></i><span class="thumb-label">JavaScript</span><img src="js.png" alt="Tela de Login - JS" onerror="this.style.display='none'"></div>
+                    <h3>Tela de Login — JS</h3>
+                    <p>Projeto de conceitos de JavaScript inspirado no curso da Rafaella Ballerini.</p>
+                </div>
+                <div class="card-item reveal from-right">
+                    <div class="card-thumb thumb-code4her"><i class="fas fa-mobile-alt"></i><span class="thumb-label">Code4Her</span><img src="code4her.png" alt="Code4Her" onerror="this.style.display='none'"></div>
+                    <h3>Code4Her — Flutterflow</h3>
+                    <p>Interface em FlutterFlow com foco em mulheres na tecnologia.</p>
+                </div>
+                <div class="card-item reveal from-left">
+                    <div class="card-thumb thumb-canva"><i class="fas fa-paint-brush"></i><span class="thumb-label">Design</span><img src="velaa.jpeg" alt="Flora Velas Aromáticas" onerror="this.style.display='none'"></div>
+                    <h3>Projetos — Canva</h3>
+                    <p>Banners criativos pelo Canva.</p>
+                </div>
+                <div class="card-item reveal">
+                    <div class="card-thumb thumb-plano"><i class="fas fa-chalkboard-teacher"></i><span class="thumb-label">Educação</span><img src="planodeaula.jpg" alt="Plano de Aula" onerror="this.style.display='none'"></div>
+                    <h3>Plano de Aula</h3>
+                    <p>Desenvolvimento e organização de Plano de Aula.</p>
+                </div>
+                <div class="card-item reveal from-right">
+                    <div class="card-thumb thumb-vicenza"><i class="fas fa-car"></i><span class="thumb-label">Vicenza</span><img src="vicenza.png" alt="Site Vicenza Empoli" onerror="this.style.display='none'"></div>
+                    <h3>Site — Vicenza Empoli</h3>
+                    <p>Site de vendas de carros de luxo em HTML, CSS e JavaScript.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="reveal" style="font-size:2.5rem;text-align:center;margin-bottom:10px;">Minhas Skills</h2>
+            <div class="skills-block">
+                <div class="skills-title-row reveal from-left">
+                    <i class="fas fa-laptop-code skills-section-icon"></i>
+                    <h3 class="skills-subtitle">Hard Skills</h3>
+                </div>
+                <div class="grid-layout">
+                    <div class="card-item skill-card reveal from-left"><div class="skill-icon-wrap hard"><i class="fas fa-brain"></i></div><h3>Lógica de Programação</h3><p>Base do pensamento computacional: resolução de problemas com sequências lógicas, estruturas condicionais e repetição.</p></div>
+                    <div class="card-item skill-card reveal"><div class="skill-icon-wrap hard"><i class="fab fa-java"></i></div><h3>Java (Básico)</h3><p>Introdução à linguagem Java com foco em POO, estrutura de classes e conceitos fundamentais da programação orientada a objetos.</p></div>
+                    <div class="card-item skill-card reveal from-right"><div class="skill-icon-wrap hard"><i class="fab fa-html5"></i></div><h3>HTML</h3><p>Criação de páginas web estruturadas, semânticas e acessíveis com marcação HTML5 moderna.</p></div>
+                    <div class="card-item skill-card reveal from-left"><div class="skill-icon-wrap hard"><i class="fab fa-css3-alt"></i></div><h3>CSS</h3><p>Estilização de interfaces com CSS3, incluindo layouts responsivos, animações e design visual atraente.</p></div>
+                    <div class="card-item skill-card reveal"><div class="skill-icon-wrap hard"><i class="fab fa-js"></i></div><h3>JavaScript</h3><p>Desenvolvimento de interatividade e lógica no front-end com JavaScript, manipulação do DOM e eventos.</p></div>
+                    <div class="card-item skill-card reveal from-right"><div class="skill-icon-wrap hard"><i class="fas fa-file-excel"></i></div><h3>Pacote Office</h3><p>Domínio das ferramentas Word, Excel, PowerPoint e Libre Office para criação de documentos, planilhas e apresentações profissionais.</p></div>
+                    <div class="card-item skill-card reveal from-left"><div class="skill-icon-wrap hard"><i class="fas fa-tools"></i></div><h3>Suporte Básico em Informática</h3><p>Diagnóstico e resolução de problemas técnicos básicos em hardware e software, manutenção e sistemas operacionais.</p></div>
+                    <div class="card-item skill-card reveal from-right"><div class="skill-icon-wrap hard"><i class="fas fa-language"></i></div><h3>Inglês Avançado</h3><p>Leitura e interpretação fluente de documentações técnicas, artigos e conteúdos em inglês na área de tecnologia.</p></div>
+                </div>
+            </div>
+            <div class="skills-block" style="margin-top:60px;">
+                <div class="skills-title-row reveal from-left">
+                    <i class="fas fa-heart skills-section-icon soft"></i>
+                    <h3 class="skills-subtitle">Soft Skills</h3>
+                </div>
+                <div class="grid-layout">
+                    <div class="card-item skill-card reveal from-left"><div class="skill-icon-wrap soft"><i class="fas fa-comments"></i></div><h3>Facilidade de Comunicação</h3><p>Capacidade de transmitir ideias com clareza e objetividade, adaptando a linguagem ao público e ao contexto.</p></div>
+                    <div class="card-item skill-card reveal"><div class="skill-icon-wrap soft"><i class="fas fa-tasks"></i></div><h3>Organização</h3><p>Gestão eficiente de tarefas, prazos e materiais, mantendo um fluxo de trabalho produtivo e estruturado.</p></div>
+                    <div class="card-item skill-card reveal from-right"><div class="skill-icon-wrap soft"><i class="fas fa-clock"></i></div><h3>Pontualidade</h3><p>Respeito ao tempo próprio e alheio, cumprindo compromissos e entregas dentro dos prazos estabelecidos.</p></div>
+                    <div class="card-item skill-card reveal from-left"><div class="skill-icon-wrap soft"><i class="fas fa-rocket"></i></div><h3>Proatividade</h3><p>Iniciativa para antecipar problemas, propor soluções e agir sem esperar ser solicitada, buscando sempre melhorias.</p></div>
+                    <div class="card-item skill-card reveal"><div class="skill-icon-wrap soft"><i class="fas fa-handshake"></i></div><h3>Compromisso</h3><p>Dedicação e responsabilidade com os projetos e pessoas envolvidas, entregando sempre o melhor resultado possível.</p></div>
+                    <div class="card-item skill-card reveal from-right"><div class="skill-icon-wrap soft"><i class="fas fa-star"></i></div><h3>Ótimo Atendimento</h3><p>Habilidade de acolher, ouvir e auxiliar pessoas com empatia, paciência e excelência no relacionamento interpessoal.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificados" class="section">
+            <h2 class="reveal" style="font-size:2.5rem;text-align:center;margin-bottom:10px;">Cursos e Certificações</h2>
+            <div class="cert-hint reveal">
+                <i class="fas fa-search-plus cert-hint-icon"></i>
+                <span>Clique em um certificado para ampliar!</span>
+            </div>
+            <div class="grid-layout">
+
+                <!-- Certificados existentes -->
+                <div class="card-item card-cert reveal from-left" data-key="atend">
+                    <div class="card-thumb thumb-atend"><i class="fas fa-headset"></i><span class="thumb-label">Atendimento</span><img src="atendimento.jpeg" alt="Atendimento ao Cliente" onerror="this.style.display='none'"></div>
+                    <h3>Atendimento ao Cliente</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="postura">
+                    <div class="card-thumb thumb-postura"><i class="fas fa-user-tie"></i><span class="thumb-label">Postura</span><img src="postura.jpeg" alt="Postura Profissional" onerror="this.style.display='none'"></div>
+                    <h3>Postura Profissional</h3>
+                </div>
+                <div class="card-item card-cert reveal from-right" data-key="poo">
+                    <div class="card-thumb thumb-poo"><i class="fas fa-cubes"></i><span class="thumb-label">POO</span><img src="poo.jpeg" alt="Programação Orientada a Objetos" onerror="this.style.display='none'"></div>
+                    <h3>Programação Orientada a Objetos</h3>
+                </div>
+                <div class="card-item card-cert reveal from-left" data-key="fu">
+                    <div class="card-thumb thumb-hs"><i class="fas fa-tools"></i><span class="thumb-label">Fundamentos de TI</span><img src="fundamentos.jpeg" alt="Fundamentos de TI" onerror="this.style.display='none'"></div>
+                    <h3>Fundamentos de TI: Hardware e Software</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="huawei">
+                    <div class="card-thumb thumb-huawei"><i class="fas fa-network-wired"></i><span class="thumb-label">Huawei</span><img src="huawei1.jpeg" alt="Certificação Huawei" onerror="this.style.display='none'"></div>
+                    <h3>Certificação Huawei</h3>
+                </div>
+                <div class="card-item card-cert reveal from-right" data-key="site">
+                    <div class="card-thumb thumb-site"><i class="fas fa-code"></i><span class="thumb-label">Web Dev</span><img src="sitesimples.jpeg" alt="Desenvolvimento de Sites" onerror="this.style.display='none'"></div>
+                    <h3>Desenvolvimento de Sites</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="ufc">
+                    <div class="card-thumb thumb-ufc"><i class="fas fa-university"></i><span class="thumb-label">UFC</span><img src="certificado-frente.png" alt="Fábrica de Programadores — UFC" onerror="this.style.display='none'"></div>
+                    <h3>Fábrica de Programadores — UFC</h3>
+                </div>
+                <div class="card-item card-cert reveal from-left" data-key="huawei2">
+                    <div class="card-thumb thumb-huawei2"><i class="fas fa-network-wired"></i><span class="thumb-label">Huawei</span><img src="huawei2.jpeg" alt="Curso de Redes Huawei" onerror="this.style.display='none'"></div>
+                    <h3>Computer Networks V1.0 — Huawei</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="coursera">
+                    <div class="card-thumb thumb-coursera" style="position:relative;">
+                        <span class="badge-cursando">Cursando</span>
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="thumb-label">Coursera</span>
+                        <img src="coursera.jpeg" alt="Curso Coursera" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Curso — Coursera</h3>
+                    <p style="font-size:0.9rem;opacity:0.75;margin-top:6px;"><i class="fas fa-spinner fa-spin" style="color:var(--accent-primary);margin-right:5px;"></i>Em andamento</p>
+                </div>
+                <div class="card-item card-cert reveal from-right" data-key="aws">
+                    <div class="card-thumb thumb-aws" style="position:relative;">
+                        <span class="badge-cursando">Cursando</span>
+                        <i class="fab fa-aws"></i>
+                        <span class="thumb-label">Amazon AWS</span>
+                        <img src="aws.jpeg" alt="Curso AWS" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Curso — Amazon AWS</h3>
+                    <p style="font-size:0.9rem;opacity:0.75;margin-top:6px;"><i class="fas fa-spinner fa-spin" style="color:var(--accent-primary);margin-right:5px;"></i>Em andamento</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contato" class="section" style="text-align:center;">
+            <p class="reveal from-left" style="font-size:1.5rem;font-family:'DM Sans',sans-serif;margin-bottom:25px;color:var(--accent-primary);">"A tecnologia move o mundo, e a educação o transforma!"</p>
+            <h2 class="reveal" style="font-size:2.5rem;">Fale comigo!</h2>
+            <div class="contato-links reveal from-left">
+                <a href="https://wa.me/5585921440474" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+                <a href="mailto:beatrizbrilhante.ti@gmail.com"><i class="fas fa-envelope"></i><span>E-mail</span></a>
+                <a href="https://github.com/brilhantebeatriz" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+                <a href="https://www.linkedin.com/in/beatriz-b-7178243b3" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+            </div>
+        </section>
+    </div>
+
+    <a href="#inicio" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    <script src="script.js"></script>
+
+    <script>
+        /* Adiciona entradas ao CERTS do lightbox para os novos cards (sem abrir lightbox, só previne erro) */
+        document.addEventListener('DOMContentLoaded', function () {
+            var extraCerts = {
+                coursera: { imgs: ["coursera.jpeg"], alts: ["Curso Coursera"] },
+                aws:      { imgs: ["aws.jpeg"],      alts: ["Curso Amazon AWS"] },
+                huawei2:  { imgs: ["huawei2.jpeg"],  alts: ["Computer Networks V1.0 — Huawei"] }
+            };
+            /* Injeta no objeto CERTS global se ele existir */
+            if (typeof CERTS !== 'undefined') {
+                Object.assign(CERTS, extraCerts);
+            }
+        });
+    </script>
+</body>
+</html>
