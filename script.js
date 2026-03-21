@@ -74,7 +74,7 @@
     drawBg();
 })();
 
-/* ========== PARALLAX — ícones flutuantes no scroll ========== */
+/* ========== PARALLAX ========== */
 (function () {
     var icons = document.querySelectorAll('.float-icon');
 
@@ -82,12 +82,8 @@
         var scrollY = window.scrollY;
         icons.forEach(function (el) {
             var speed = parseFloat(el.getAttribute('data-speed')) || 0.08;
-            var baseTranslate = scrollY * speed;
-            // Mantém a animação CSS de drift mas adiciona translação de scroll
-            el.style.marginTop = baseTranslate + 'px';
+            el.style.marginTop = (scrollY * speed) + 'px';
         });
-
-        // Parallax na foto de perfil
         var wrapper = document.querySelector('.foto-perfil-wrapper');
         if (wrapper) wrapper.style.transform = 'translateY(' + (scrollY * 0.10) + 'px)';
     }
@@ -113,14 +109,18 @@ window.addEventListener('scroll', function () {
 
 /* ========== LIGHTBOX ========== */
 var CERTS = {
-    atend:   { imgs: ["atendimento.png"],                                alts: ["Atendimento ao Cliente"] },
-    postura: { imgs: ["postura.png"],                                    alts: ["Postura Profissional"] },
-    poo:     { imgs: ["POO.png"],                                        alts: ["Programação Orientada a Objetos"] },
-    fu:      { imgs: ["fundamentos.png"],                                alts: ["Fundamentos de TI: Hardware e Software"] },
-    huawei:  { imgs: ["huawei1.png"],                                    alts: ["Certificação Huawei"] },
-    site:    { imgs: ["sitesimples.png"],                                alts: ["Desenvolvimento de Sites"] },
-    ufc:     { imgs: ["certificado-frente.png", "certificado-verso.png"], alts: ["UFC — Frente", "UFC — Verso"] }
+    atend:    { imgs: ["atendimento.png"],                                   alts: ["Atendimento ao Cliente"] },
+    postura:  { imgs: ["postura.png"],                                       alts: ["Postura Profissional"] },
+    poo:      { imgs: ["POO.png"],                                           alts: ["Programação Orientada a Objetos"] },
+    fu:       { imgs: ["fundamentos.png"],                                   alts: ["Fundamentos de TI: Hardware e Software"] },
+    huawei:   { imgs: ["huawei1.png"],                                       alts: ["Certificação Huawei"] },
+    site:     { imgs: ["sitesimples.png"],                                   alts: ["Desenvolvimento de Sites"] },
+    ufc:      { imgs: ["certificado-frente.png", "certificado-verso.png"],   alts: ["UFC — Frente", "UFC — Verso"] },
+    huawei2:  { imgs: ["huawei2.jpeg"],                                      alts: ["Computer Networks V1.0 — Huawei"] },
+    coursera: { imgs: ["coursera.jpeg"],                                     alts: ["Curso Coursera"] },
+    aws:      { imgs: ["aws.jpeg"],                                          alts: ["Curso Amazon AWS"] }
 };
+
 var lightbox = document.getElementById('lightbox');
 var lbImg = document.getElementById('lightbox-img');
 var lbClose = document.getElementById('lightbox-close');
@@ -140,16 +140,20 @@ function showSlide(i) {
     lbCounter.style.display = total > 1 ? 'block' : 'none';
     lbCounter.textContent = (i + 1) + ' / ' + total;
 }
+
 document.querySelectorAll('.card-cert').forEach(function (card) {
     card.addEventListener('click', function () {
         var cert = CERTS[card.getAttribute('data-key')];
+        if (!cert) return;
         lbImages = cert.imgs; lbAlts = cert.alts;
         showSlide(0); lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
 });
+
 lbPrev.addEventListener('click', function (e) { e.stopPropagation(); if (lbIndex > 0) showSlide(lbIndex - 1); });
 lbNext.addEventListener('click', function (e) { e.stopPropagation(); if (lbIndex < lbImages.length - 1) showSlide(lbIndex + 1); });
+
 function closeLightbox() {
     lightbox.classList.remove('active'); document.body.style.overflow = '';
     lbImg.src = ''; lbImages = []; lbAlts = []; lbIndex = 0;

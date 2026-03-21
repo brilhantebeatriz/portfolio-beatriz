@@ -7,6 +7,51 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== BADGE CURSANDO ===== */
+        .badge-cursando {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #FF2D78, #ff6b35);
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 13px;
+            border-radius: 50px;
+            box-shadow: 0 4px 14px rgba(255,45,120,0.45);
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+        .badge-cursando::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #fff;
+            border-radius: 50%;
+            animation: blink-dot 1.2s ease-in-out infinite;
+        }
+        @keyframes pulse-badge {
+            0%,100% { box-shadow: 0 4px 14px rgba(255,45,120,0.45); }
+            50%      { box-shadow: 0 4px 22px rgba(255,45,120,0.75); }
+        }
+        @keyframes blink-dot {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0.25; }
+        }
+
+        /* ===== THUMBS NOVOS ===== */
+        .thumb-coursera { background: linear-gradient(135deg, #0056D2, #00BAFF); }
+        .thumb-aws      { background: linear-gradient(135deg, #1a2332, #FF9900); }
+    </style>
 </head>
 <body>
 
@@ -30,7 +75,7 @@
     <div id="lightbox">
         <button id="lightbox-close"><i class="fas fa-times"></i></button>
         <button class="lb-nav hidden" id="lb-prev"><i class="fas fa-chevron-left"></i></button>
-        <img id="lightbox-img" src="" alt="">
+        <img id="lightbox-img" src="eu.jpeg" alt="eu">
         <button class="lb-nav hidden" id="lb-next"><i class="fas fa-chevron-right"></i></button>
         <div id="lb-counter"></div>
     </div>
@@ -38,7 +83,6 @@
     <!-- PARALLAX FUNDO -->
     <div id="parallax-bg">
         <canvas id="particles-canvas"></canvas>
-        <!-- Ícones flutuantes de educação e informática -->
         <div class="float-icon" data-speed="0.06" style="top:8%;left:5%;font-size:2.2rem;"><i class="fas fa-book-open"></i></div>
         <div class="float-icon" data-speed="0.10" style="top:15%;left:88%;font-size:1.8rem;"><i class="fas fa-laptop"></i></div>
         <div class="float-icon" data-speed="0.07" style="top:25%;left:15%;font-size:1.5rem;"><i class="fas fa-code"></i></div>
@@ -124,7 +168,7 @@
                     <p>Interface em FlutterFlow com foco em mulheres na tecnologia.</p>
                 </div>
                 <div class="card-item reveal from-left">
-                    <div class="card-thumb thumb-canva"><i class="fas fa-paint-brush"></i><span class="thumb-label">Design</span><img src="velaa.png" alt="Flora Velas Aromáticas" onerror="this.style.display='none'"></div>
+                    <div class="card-thumb thumb-canva"><i class="fas fa-paint-brush"></i><span class="thumb-label">Design</span><img src="velaa.jpeg" alt="Flora Velas Aromáticas" onerror="this.style.display='none'"></div>
                     <h3>Projetos — Canva</h3>
                     <p>Banners criativos pelo Canva.</p>
                 </div>
@@ -179,16 +223,64 @@
             <h2 class="reveal" style="font-size:2.5rem;text-align:center;margin-bottom:10px;">Cursos e Certificações</h2>
             <div class="cert-hint reveal">
                 <i class="fas fa-search-plus cert-hint-icon"></i>
-                <span>Clique em um certificado para ampliar</span>
+                <span>Clique em um certificado para ampliar!</span>
             </div>
             <div class="grid-layout">
-                <div class="card-item card-cert reveal from-left" data-key="atend"><div class="card-thumb thumb-atend"><i class="fas fa-headset"></i><span class="thumb-label">Atendimento</span><img src="atendimento.png" alt="Atendimento ao Cliente"></div><h3>Atendimento ao Cliente</h3></div>
-                <div class="card-item card-cert reveal" data-key="postura"><div class="card-thumb thumb-postura"><i class="fas fa-user-tie"></i><span class="thumb-label">Postura</span><img src="postura.png" alt="Postura Profissional"></div><h3>Postura Profissional</h3></div>
-                <div class="card-item card-cert reveal from-right" data-key="poo"><div class="card-thumb thumb-poo"><i class="fas fa-cubes"></i><span class="thumb-label">POO</span><img src="poo.png" alt="Programação Orientada a Objetos"></div><h3>Programação Orientada a Objetos</h3></div>
-                <div class="card-item card-cert reveal from-left" data-key="fu"><div class="card-thumb thumb-hs"><i class="fas fa-tools"></i><span class="thumb-label">Fundamentos de TI</span><img src="fundamentos.png" alt="Fundamentos de TI"></div><h3>Fundamentos de TI: Hardware e Software</h3></div>
-                <div class="card-item card-cert reveal" data-key="huawei"><div class="card-thumb thumb-huawei"><i class="fas fa-network-wired"></i><span class="thumb-label">Huawei</span><img src="huawei1.png" alt="Certificação Huawei"></div><h3>Certificação Huawei</h3></div>
-                <div class="card-item card-cert reveal from-right" data-key="site"><div class="card-thumb thumb-site"><i class="fas fa-code"></i><span class="thumb-label">Web Dev</span><img src="sitesimples.png" alt="Desenvolvimento de Sites"></div><h3>Desenvolvimento de Sites</h3></div>
-                <div class="card-item card-cert reveal" data-key="ufc"><div class="card-thumb thumb-ufc"><i class="fas fa-university"></i><span class="thumb-label">UFC</span><img src="certificado-frente.png" alt="Fábrica de Programadores — UFC"></div><h3>Fábrica de Programadores — UFC</h3></div>
+
+                <!-- Certificados existentes -->
+                <div class="card-item card-cert reveal from-left" data-key="atend">
+                    <div class="card-thumb thumb-atend"><i class="fas fa-headset"></i><span class="thumb-label">Atendimento</span><img src="atendimento.jpeg" alt="Atendimento ao Cliente" onerror="this.style.display='none'"></div>
+                    <h3>Atendimento ao Cliente</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="postura">
+                    <div class="card-thumb thumb-postura"><i class="fas fa-user-tie"></i><span class="thumb-label">Postura</span><img src="postura.jpeg" alt="Postura Profissional" onerror="this.style.display='none'"></div>
+                    <h3>Postura Profissional</h3>
+                </div>
+                <div class="card-item card-cert reveal from-right" data-key="poo">
+                    <div class="card-thumb thumb-poo"><i class="fas fa-cubes"></i><span class="thumb-label">POO</span><img src="poo.jpeg" alt="Programação Orientada a Objetos" onerror="this.style.display='none'"></div>
+                    <h3>Programação Orientada a Objetos</h3>
+                </div>
+                <div class="card-item card-cert reveal from-left" data-key="fu">
+                    <div class="card-thumb thumb-hs"><i class="fas fa-tools"></i><span class="thumb-label">Fundamentos de TI</span><img src="fundamentos.jpeg" alt="Fundamentos de TI" onerror="this.style.display='none'"></div>
+                    <h3>Fundamentos de TI: Hardware e Software</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="huawei">
+                    <div class="card-thumb thumb-huawei"><i class="fas fa-network-wired"></i><span class="thumb-label">Huawei</span><img src="huawei1.jpeg" alt="Certificação Huawei" onerror="this.style.display='none'"></div>
+                    <h3>Certificação Huawei</h3>
+                </div>
+                <div class="card-item card-cert reveal from-right" data-key="site">
+                    <div class="card-thumb thumb-site"><i class="fas fa-code"></i><span class="thumb-label">Web Dev</span><img src="sitesimples.jpeg" alt="Desenvolvimento de Sites" onerror="this.style.display='none'"></div>
+                    <h3>Desenvolvimento de Sites</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="ufc">
+                    <div class="card-thumb thumb-ufc"><i class="fas fa-university"></i><span class="thumb-label">UFC</span><img src="certificado-frente.png" alt="Fábrica de Programadores — UFC" onerror="this.style.display='none'"></div>
+                    <h3>Fábrica de Programadores — UFC</h3>
+                </div>
+                <div class="card-item card-cert reveal from-left" data-key="huawei2">
+                    <div class="card-thumb thumb-huawei2"><i class="fas fa-network-wired"></i><span class="thumb-label">Huawei</span><img src="huawei2.jpeg" alt="Curso de Redes Huawei" onerror="this.style.display='none'"></div>
+                    <h3>Computer Networks V1.0 — Huawei</h3>
+                </div>
+                <div class="card-item card-cert reveal" data-key="coursera">
+                    <div class="card-thumb thumb-coursera" style="position:relative;">
+                        <span class="badge-cursando">Cursando</span>
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="thumb-label">Coursera</span>
+                        <img src="coursera.jpeg" alt="Curso Coursera" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Curso — Coursera</h3>
+                    <p style="font-size:0.9rem;opacity:0.75;margin-top:6px;"><i class="fas fa-spinner fa-spin" style="color:var(--accent-primary);margin-right:5px;"></i>Em andamento</p>
+                </div>
+                <div class="card-item card-cert reveal from-right" data-key="aws">
+                    <div class="card-thumb thumb-aws" style="position:relative;">
+                        <span class="badge-cursando">Cursando</span>
+                        <i class="fab fa-aws"></i>
+                        <span class="thumb-label">Amazon AWS</span>
+                        <img src="aws.jpeg" alt="Curso AWS" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Curso — Amazon AWS</h3>
+                    <p style="font-size:0.9rem;opacity:0.75;margin-top:6px;"><i class="fas fa-spinner fa-spin" style="color:var(--accent-primary);margin-right:5px;"></i>Em andamento</p>
+                </div>
+
             </div>
         </section>
 
@@ -206,5 +298,20 @@
 
     <a href="#inicio" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
     <script src="script.js"></script>
+
+    <script>
+        /* Adiciona entradas ao CERTS do lightbox para os novos cards (sem abrir lightbox, só previne erro) */
+        document.addEventListener('DOMContentLoaded', function () {
+            var extraCerts = {
+                coursera: { imgs: ["coursera.jpeg"], alts: ["Curso Coursera"] },
+                aws:      { imgs: ["aws.jpeg"],      alts: ["Curso Amazon AWS"] },
+                huawei2:  { imgs: ["huawei2.jpeg"],  alts: ["Computer Networks V1.0 — Huawei"] }
+            };
+            /* Injeta no objeto CERTS global se ele existir */
+            if (typeof CERTS !== 'undefined') {
+                Object.assign(CERTS, extraCerts);
+            }
+        });
+    </script>
 </body>
 </html>
